@@ -32,6 +32,12 @@ public class DuckHunter {
     
     String [][]tauler = new String [y][x];
     
+    for (int i = 0; i < tauler.length; i++){
+    for (int j = 0; j < tauler[0].length; j++){
+        tauler[i][j] = "*";
+        }
+    }
+    
     /* Creació de les fiches */           
         int jx = (int) (Math.random() * x);
         int jy = (int) (Math.random() * y);

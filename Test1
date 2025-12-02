@@ -11,11 +11,9 @@ import java.util.Scanner;
  */
 public class DuckHunter {
 
-    public static void main(String[] args) {
-        Scanner llegir = new Scanner(System.in);
-        
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
         Scanner sc = new Scanner(System.in);
+        
         System.out.println("Benvingut al joc 'Duck Hunter'. Si us plau, introdueix la mida de la zona de lloc.");
         System.out.println("La mida horitzontal ha de ser entre 20 i 40 caselles: ");
         
@@ -40,8 +38,6 @@ public class DuckHunter {
         }
             System.out.println();
         }
-    }
-}
 
 /* Creació de les fiches */           
         int jx = (int) (Math.random() * x);

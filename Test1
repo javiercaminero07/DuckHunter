@@ -28,18 +28,11 @@ public class DuckHunter {
     while (y < 10 || y > 20) {
         System.out.println("La mida vertical ha de ser entre 10 i 20 caselles: ");
         y = llegir.nextInt();
-    
     }    
-        String [][]tauler = new String [y][x];
-        for(int f=0; f<tauler.length; f++){
-            for (int c = 0; c < tauler[0].length; c++) {
-            System.out.print("*" + " ");
-            tauler[f][c]= "*" ;
-        }
-            System.out.println();
-        }
-
-/* Creació de les fiches */           
+    
+    String [][]tauler = new String [y][x];
+    
+    /* Creació de les fiches */           
         int jx = (int) (Math.random() * x);
         int jy = (int) (Math.random() * y);
         
@@ -52,10 +45,19 @@ public class DuckHunter {
         int xx = (int) (Math.random() * x);
         int xy = (int) (Math.random() * y);
        
-        tauler[jx][jy] = "J"; 
-        tauler[dx][dy] = "D"; 
-        tauler[gx][gy] = "G"; 
-        tauler[xx][xy] = "X"; 
+        tauler[jy][jx] = "J"; 
+        tauler[dy][dx] = "D"; 
+        tauler[gy][gx] = "G"; 
+        tauler[xy][xx] = "X"; 
+        
+        
+        for(int f=0; f<tauler.length; f++){
+            for (int c = 0; c < tauler[0].length; c++) {
+            System.out.print(tauler[f][c] + " ");
+        }
+            System.out.println();
+        }
+
 
         /* Bucle sense pollete */ 
         do{
@@ -65,34 +67,34 @@ public class DuckHunter {
             /* Moviment Jugador */  
             switch (moviment) {
                 case "W":
-                    tauler[jx][jy] = "*";
-                    tauler[jx][jy + 1] = "J";
+                    tauler[jy][jx] = "*";
+                    tauler[jy][jx + 1] = "J";
                     break;
                 case "S":
-                    tauler[jx][jy] = "*";
-                    tauler[jx][jy - 1] = "J";
+                    tauler[jy][jx] = "*";
+                    tauler[jy][jx - 1] = "J";
                     break;
                 case "A":
-                    tauler[jx][jy] = "*";
-                    tauler[jx - 1][jy] = "J";           
+                    tauler[jy][jx] = "*";
+                    tauler[jy - 1][jx] = "J";           
                     break;
                 case "D":
-                    tauler[jx][jy] = "*";
-                    tauler[jx + 1][jy] = "J";
+                    tauler[jy][jx] = "*";
+                    tauler[jy + 1][jx] = "J";
                     break;
             }
      /* Moviment Guineu + Si la guineu atrapa a Pollete */       
-            if (gx > dx){
-                tauler[gx - 1][gy] = "G";
-            }else if (gx < dx){
-                tauler[gx + 1][gy] = "G";         
-            }
             if (gy > dy){
-                tauler[gx][gy - 1] = "G";
+                tauler[gy - 1][gx] = "G";
             }else if (gy < dy){
-                tauler[gx][gy + 1] = "G";         
+                tauler[gy + 1][gx] = "G";         
             }
-            if (gx == dx && gy == dy){
+            if (gx > dx){
+                tauler[gy][gx - 1] = "G";
+            }else if (gx < dx){
+                tauler[gy][gx + 1] = "G";         
+            }
+            if (gy == dy && gx == dx){
                 System.out.println("La guineu s'ha menjat al pollet/a/e \n Fi de la partida");
                 /* For per a imprimir el tauler */ 
                 break;
@@ -109,53 +111,53 @@ public class DuckHunter {
 
             switch (moviment) {
                 case "W":
-                    tauler[jx][jy] = "*";
-                    tauler[jx][jy + 1] = "J";
+                    tauler[jy][jx] = "*";
+                    tauler[jy][jx + 1] = "J";
                     break;
                 case "S":
-                    tauler[jx][jy] = "*";
-                    tauler[jx][jy - 1] = "J";
+                    tauler[jy][jx] = "*";
+                    tauler[jy][jx - 1] = "J";
                     break;
                 case "A":
-                    tauler[jx][jy] = "*";
-                    tauler[jx - 1][jy] = "J";           
+                    tauler[jy][jx] = "*";
+                    tauler[jy - 1][jx] = "J";           
                     break;
                 case "D":
-                    tauler[jx][jy] = "*";
-                    tauler[jx + 1][jy] = "J";
+                    tauler[jy][jx] = "*";
+                    tauler[jy + 1][jx] = "J";
                     break;
             }
             
         /* Moviment Pollete */
             switch (moviment) {
                 case "W":
-                    tauler[dx][dy] = "*";
-                    tauler[jx][jy] = "D";
+                    tauler[dy][dx] = "*";
+                    tauler[jy][jx] = "D";
                     break;
                 case "S":
-                    tauler[dx][dy] = "*";
-                    tauler[jx][jy] = "D";
+                    tauler[dy][dx] = "*";
+                    tauler[jy][jx] = "D";
                     break;
                 case "A":
-                    tauler[dx][dy] = "*";
-                    tauler[jx][jy] = "D";        
+                    tauler[dy][dx] = "*";
+                    tauler[jy][jx] = "D";        
                     break;
                 case "D":
-                    tauler[dx][dy] = "*";
-                    tauler[jx][jy] = "D";
+                    tauler[dy][dx] = "*";
+                    tauler[jy][jx] = "D";
                     break;
             }           
         
      /* Moviment Guineu + Si la guineu atrapa a Pollete */       
-            if (gx > dx){
-                tauler[gx - 1][gy] = "G";
-            }else if (gx < dx){
-                tauler[gx + 1][gy] = "G";         
-            }
             if (gy > dy){
-                tauler[gx][gy - 1] = "G";
-            }else if (gy < dy){
-                tauler[gx][gy + 1] = "G";         
+                tauler[gy - 1][gx] = "G";
+            }else if (gx < dx){
+                tauler[gy + 1][gx] = "G";         
+            }
+            if (gx > dx){
+                tauler[gy][gx - 1] = "G";
+            }else if (gx < dx){
+                tauler[gy][gx + 1] = "G";         
             }
             if (gx == dx && gy == dy){
                 System.out.println("La guineu s'ha menjat al pollet/a/e \n Fi de la partida");

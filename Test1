@@ -70,41 +70,60 @@ public class DuckHunter {
             System.out.println("Moute amb WASD: ");
             String moviment = llegir.nextLine();
             moviment = moviment.toUpperCase();
+            
+            if (moviment.equals("")){
+                continue;
+            }
+            else{
             /* Moviment Jugador */  
             switch (moviment) {
                 case "W":
                     tauler[jy][jx] = "*";
-                    tauler[jy][jx + 1] = "J";
+                    tauler[jy + 1][jx] = "J";
                     break;
                 case "S":
                     tauler[jy][jx] = "*";
-                    tauler[jy][jx - 1] = "J";
+                    tauler[jy - 1][jx] = "J";
                     break;
                 case "A":
                     tauler[jy][jx] = "*";
-                    tauler[jy - 1][jx] = "J";           
+                    tauler[jy][jx -1] = "J";           
                     break;
                 case "D":
                     tauler[jy][jx] = "*";
-                    tauler[jy + 1][jx] = "J";
+                    tauler[jy][jx + 1] = "J";
                     break;
             }
      /* Moviment Guineu + Si la guineu atrapa a Pollete */       
             if (gy > dy){
+                tauler[gy][gx] = "*";
                 tauler[gy - 1][gx] = "G";
             }else if (gy < dy){
-                tauler[gy + 1][gx] = "G";         
+                tauler[gy][gx] = "*";
+                tauler[gy + 1][gx] = "G"; 
             }
-            if (gx > dx){
+            else if (gx > dx){
+                tauler[gy][gx] = "*";
                 tauler[gy][gx - 1] = "G";
             }else if (gx < dx){
-                tauler[gy][gx + 1] = "G";         
+                tauler[gy][gx] = "*";
+                tauler[gy][gx + 1] = "G"; 
             }
             if (gy == dy && gx == dx){
                 System.out.println("La guineu s'ha menjat al pollet/a/e \n Fi de la partida");
                 /* For per a imprimir el tauler */ 
                 break;
             }
+            
+            for(int f=0; f<tauler.length; f++){
+                for (int c = 0; c < tauler[0].length; c++) {
+                    System.out.print(tauler[f][c] + " ");
+                }
+                System.out.println();
+            }
+            moviment = "";
+            }
+
         }while(!(jx == dx && jy == dy));
         System.out.println("Has agafat al Pollet/a/e \n Ara toca escapar de la Guineu corre cap a la X");
         /* For per a imprimir el tauler */ 

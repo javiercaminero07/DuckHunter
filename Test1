@@ -14,6 +14,34 @@ public class DuckHunter {
     public static void main(String[] args) {
         Scanner llegir = new Scanner(System.in);
         
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Benvingut al joc 'Duck Hunter'. Si us plau, introdueix la mida de la zona de lloc.");
+        System.out.println("La mida horitzontal ha de ser entre 20 i 40 caselles: ");
+        
+        int horitzontal = sc.nextInt();
+    while (horitzontal < 20 || horitzontal > 40) {
+        System.out.println("La mida horitzontal ha de ser entre 20 i 40 caselles: ");
+        horitzontal = sc.nextInt();
+    }
+
+    System.out.println("La mida vertical ha de ser entre 10 i 20 caselles: ");
+    int vertical = sc.nextInt();
+    while (vertical < 10 || vertical > 20) {
+        System.out.println("La mida vertical ha de ser entre 10 i 20 caselles: ");
+        vertical = sc.nextInt();
+    
+    }    
+        String [][]taulerJoc = new String [vertical][horitzontal];
+        for(int f=0; f<taulerJoc.length; f++){
+            for (int c = 0; c < taulerJoc[0].length; c++) {
+            System.out.print("*" + " ");
+            taulerJoc[f][c]= "*" ;
+        }
+            System.out.println();
+        }
+    }
+}
 
 /* Creació de les fiches */           
         int jx = (int) (Math.random() * x);

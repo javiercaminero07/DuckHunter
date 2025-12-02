@@ -1,0 +1,148 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.duckhunter;
+import java.util.Scanner;
+
+/**
+ *
+ * @author aclemente
+ */
+public class DuckHunter {
+
+    public static void main(String[] args) {
+        Scanner llegir = new Scanner(System.in);
+        
+
+/* Creació de les fiches */           
+        int jx = (int) (Math.random() * x);
+        int jy = (int) (Math.random() * y);
+        
+        int dx = (int) (Math.random() * x);
+        int dy = (int) (Math.random() * y);
+        
+        int gx = (int) (Math.random() * x);
+        int gy = (int) (Math.random() * y);
+        
+        int xx = (int) (Math.random() * x);
+        int xy = (int) (Math.random() * y);
+       
+        tauler[jx][jy] = "J"; 
+        tauler[dx][dy] = "D"; 
+        tauler[gx][gy] = "G"; 
+        tauler[xx][xy] = "X"; 
+
+        /* Bucle sense pollete */ 
+        do{
+            System.out.println("Moute amb WASD: ");
+            String moviment = llegir.nextLine();
+            moviment = moviment.toUpperCase();
+            /* Moviment Jugador */  
+            switch (moviment) {
+                case "W":
+                    tauler[jx][jy] = "*";
+                    tauler[jx][jy + 1] = "J";
+                    break;
+                case "S":
+                    tauler[jx][jy] = "*";
+                    tauler[jx][jy - 1] = "J";
+                    break;
+                case "A":
+                    tauler[jx][jy] = "*";
+                    tauler[jx - 1][jy] = "J";           
+                    break;
+                case "D":
+                    tauler[jx][jy] = "*";
+                    tauler[jx + 1][jy] = "J";
+                    break;
+            }
+     /* Moviment Guineu + Si la guineu atrapa a Pollete */       
+            if (gx > dx){
+                tauler[gx - 1][gy] = "G";
+            }else if (gx < dx){
+                tauler[gx + 1][gy] = "G";         
+            }
+            if (gy > dy){
+                tauler[gx][gy - 1] = "G";
+            }else if (gy < dy){
+                tauler[gx][gy + 1] = "G";         
+            }
+            if (gx == dx && gy == dy){
+                System.out.println("La guineu s'ha menjat al pollet/a/e \n Fi de la partida");
+                /* For per a imprimir el tauler */ 
+                break;
+            }
+        }while(!(jx == dx && jy == dy));
+        System.out.println("Has agafat al Pollet/a/e \n Ara toca escapar de la Guineu corre cap a la X");
+        /* For per a imprimir el tauler */ 
+            
+        /* Bucle amb Pollete agafat */ 
+        do{
+            System.out.println("Moute amb WASD: ");
+            String moviment = llegir.nextLine();
+            moviment = moviment.toUpperCase();
+
+            switch (moviment) {
+                case "W":
+                    tauler[jx][jy] = "*";
+                    tauler[jx][jy + 1] = "J";
+                    break;
+                case "S":
+                    tauler[jx][jy] = "*";
+                    tauler[jx][jy - 1] = "J";
+                    break;
+                case "A":
+                    tauler[jx][jy] = "*";
+                    tauler[jx - 1][jy] = "J";           
+                    break;
+                case "D":
+                    tauler[jx][jy] = "*";
+                    tauler[jx + 1][jy] = "J";
+                    break;
+            }
+            
+        /* Moviment Pollete */
+            switch (moviment) {
+                case "W":
+                    tauler[dx][dy] = "*";
+                    tauler[jx][jy] = "D";
+                    break;
+                case "S":
+                    tauler[dx][dy] = "*";
+                    tauler[jx][jy] = "D";
+                    break;
+                case "A":
+                    tauler[dx][dy] = "*";
+                    tauler[jx][jy] = "D";        
+                    break;
+                case "D":
+                    tauler[dx][dy] = "*";
+                    tauler[jx][jy] = "D";
+                    break;
+            }           
+        
+     /* Moviment Guineu + Si la guineu atrapa a Pollete */       
+            if (gx > dx){
+                tauler[gx - 1][gy] = "G";
+            }else if (gx < dx){
+                tauler[gx + 1][gy] = "G";         
+            }
+            if (gy > dy){
+                tauler[gx][gy - 1] = "G";
+            }else if (gy < dy){
+                tauler[gx][gy + 1] = "G";         
+            }
+            if (gx == dx && gy == dy){
+                System.out.println("La guineu s'ha menjat al pollet/a/e \n Fi de la partida");
+                /* For per a imprimir el tauler */ 
+                break;
+            }        
+        }while(!(xx == jx && xy == jy));
+        System.out.println("Has salvat al Pollet/a/e \n felicitats!!!!!!!!!!!!!!");
+        /* For per a imprimir el tauler */ 
+
+
+
+    }
+}

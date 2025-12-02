@@ -12,29 +12,29 @@ import java.util.Scanner;
 public class DuckHunter {
 
     public static void main(String[] args) {        
-        Scanner sc = new Scanner(System.in);
+        Scanner llegir = new Scanner(System.in);
         
         System.out.println("Benvingut al joc 'Duck Hunter'. Si us plau, introdueix la mida de la zona de lloc.");
         System.out.println("La mida horitzontal ha de ser entre 20 i 40 caselles: ");
         
-        int horitzontal = sc.nextInt();
-    while (horitzontal < 20 || horitzontal > 40) {
+        int x = llegir.nextInt();
+    while (x < 20 || x > 40) {
         System.out.println("La mida horitzontal ha de ser entre 20 i 40 caselles: ");
-        horitzontal = sc.nextInt();
+        x = llegir.nextInt();
     }
 
     System.out.println("La mida vertical ha de ser entre 10 i 20 caselles: ");
-    int vertical = sc.nextInt();
-    while (vertical < 10 || vertical > 20) {
+    int y = llegir.nextInt();
+    while (y < 10 || y > 20) {
         System.out.println("La mida vertical ha de ser entre 10 i 20 caselles: ");
-        vertical = sc.nextInt();
+        y = llegir.nextInt();
     
     }    
-        String [][]taulerJoc = new String [vertical][horitzontal];
-        for(int f=0; f<taulerJoc.length; f++){
-            for (int c = 0; c < taulerJoc[0].length; c++) {
+        String [][]tauler = new String [y][x];
+        for(int f=0; f<tauler.length; f++){
+            for (int c = 0; c < tauler[0].length; c++) {
             System.out.print("*" + " ");
-            taulerJoc[f][c]= "*" ;
+            tauler[f][c]= "*" ;
         }
             System.out.println();
         }
